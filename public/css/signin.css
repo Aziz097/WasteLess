@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1E4316;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 60px;
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 38px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+
+input[type="text"], input[type="password"] {
+    width: 90%;
+    padding: 18px 14px;
+    border-radius: 100px;
+    border: 3px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    border-color: #A99A29;
+    margin-bottom: 20px;
+    background-color: #1E4316; 
+    color: #ffffff; 
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #ffffff;
+    padding-left: 20px;
+}
+
+.forgot-password {
+    margin-bottom: 20px;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.forgot-password a {
+    color: #b4a04a; 
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.login-btn {
+    width: 80%;
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 100px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #A99A29; 
+    color: #f8f8f8;
+}
+
+.login-btn:hover {
+    background-color: #c9b35c; 
+}
+
+.sign-up {
+    margin-top: 350px;
+    color: #b4a04a;
+    font-size: 16px;
+}
+
+.sign-up a {
+    color: #b4a04a; 
+    text-decoration: none;
+    font-weight: bold;
+}

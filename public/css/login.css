@@ -12,23 +12,18 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #3B5323; /* Green background */
+    background-color: #1E4316; /* Green background */
     text-align: center;
 }
 
 .logo-img {
-    width: 150px;
+    width: 350px;
     height: auto;
-}
-
-.title h1 {
-    font-size: 36px;
-    color: #ffffff;
-    margin-top: 20px;
 }
 
 .buttons {
     margin-top: 50px;
+    width: 80%;
 }
 
 .login-btn, .signup-btn {
@@ -36,18 +31,17 @@ body, html {
     padding: 15px;
     margin: 10px;
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 100px;
+    font-size: 20px;
     cursor: pointer;
-    background-color: #D4AF37; /* Gold button color */
-    color: #000;
+    background-color: #A99A29; 
+    color: #f8f8f8;
 }
 
 .login-btn:hover, .signup-btn:hover {
     background-color: #b08d28;
 }
 
-/* Media Query for small screens */
 @media only screen and (max-width: 768px) {
     .login-btn, .signup-btn {
         width: 90%;

@@ -4,42 +4,48 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupermarketController;
 
+// Landing Page and Authentication Routes
 Route::get('/', function () {
     return view('register');
-});
+})->name('home');
+
 Route::get('/signin', function () {
     return view('login.signin');
-});
+})->name('signin');
+
 Route::get('/signup', function () {
     return view('login.signup');
-});
+})->name('signup');
+
 Route::get('/otp', function () {
     return view('login.otp');
-});
+})->name('otp');
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-// Rute GET untuk menampilkan form registrasi supermarket
-Route::get('/signup/supermarket', function () {
-    return view('signup.supermarket');  // Sesuaikan dengan lokasi file
-})->name('signup.supermarket');
+// Supermarket Signup Routes
+// Step 1: Display the supermarket registration form
+Route::get('/signup/supermarket', [SupermarketController::class, 'showStep1'])
+    ->name('signup.supermarket');
 
-// Rute POST untuk memproses data form
-Route::post('/register/supermarket', [SupermarketController::class, 'register'])->name('supermarket.register');
+// Step 1: Handle the supermarket registration form submission
+Route::post('/signup/supermarket', [SupermarketController::class, 'processStep1'])
+    ->name('supermarket.register');
 
-Route::get('/signup/customer', function () {
-    return view('signup.customer');  // Arahkan ke resources/views/signup/customer.blade.php
-})->name('signup.customer');
-// Rute POST untuk memproses formulir registrasi customer
-Route::post('/register/customer', [CustomerController::class, 'register'])->name('customer.register');
-Route::get('/signup', function () {    
-    return view('signup'); 
-})->name('signup');
-// Rute GET untuk menampilkan halaman lanjutan form (tahap 2)
-Route::get('/signup/supermarket/step2', function () {
-    return view('signup.supermarket_step2');  // Sesuaikan dengan nama file
-})->name('signup.supermarket.step2');
+// Step 2: Display the continuation form (step 2)
+Route::get('/signup/supermarket/step2', [SupermarketController::class, 'showStep2'])
+    ->name('signup.supermarket.step2');
 
-// Rute POST untuk memproses data form (tahap 2)
-Route::post('/register/supermarket/step2', [SupermarketController::class, 'registerStep2'])->name('supermarket.register.stage2');
+// Step 2: Handle the form submission for step 2
+Route::post('/signup/supermarket/step2', [SupermarketController::class, 'processStep2'])
+    ->name('supermarket.register.stage2');
+
+// Customer Signup Routes
+Route::get('/signup/customer', [CustomerController::class, 'showForm'])
+    ->name('signup.customer');
+
+// Handle customer registration form submission
+Route::post('/register/customer', [CustomerController::class, 'register'])
+    ->name('customer.register');

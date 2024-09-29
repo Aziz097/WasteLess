@@ -45,6 +45,8 @@
                 <div id="password-error" style="color: red; display: none;">
                     <i class="fas fa-exclamation-circle"></i> <span></span>
                 </div>
+                <!-- Password Strength Indicator -->
+                <div id="password-strength-text" style="margin-top: 5px; font-size: 12px;"></div>
             </div>
 
             <!-- Konfirmasi Kata Sandi -->
@@ -85,12 +87,36 @@
     const passwordConfirmInput = document.getElementById('password_confirmation');
     const submitButton = document.getElementById('submitButton');
     const termsCheckbox = document.getElementById('terms');
+    const passwordStrengthText = document.getElementById('password-strength-text');
 
     // Error message elements
     const nameError = document.getElementById('name-error').querySelector('span');
     const phoneError = document.getElementById('phone-error').querySelector('span');
     const passwordError = document.getElementById('password-error').querySelector('span');
     const passwordConfirmError = document.getElementById('password-confirm-error').querySelector('span');
+
+    // Password Strength Indicator
+    passwordInput.addEventListener('input', function () {
+        const value = passwordInput.value;
+        let strength = 'Weak';
+        let color = 'red';
+
+        // Check for password strength
+        if (value.length >= 8) {
+            if (/[A-Z]/.test(value) && /[a-z]/.test(value) && /[0-9]/.test(value)) {
+                strength = 'Medium';
+                color = 'orange';
+            }
+            if (/[A-Z]/.test(value) && /[a-z]/.test(value) && /[0-9]/.test(value) && /[!@#$%^&*]/.test(value)) {
+                strength = 'Strong';
+                color = 'green';
+            }
+        }
+
+        // Display the password strength text
+        passwordStrengthText.textContent = `Kekuatan Kata Sandi: ${strength}`;
+        passwordStrengthText.style.color = color;
+    });
 
     // Validation logic
     function validateName() {
@@ -144,6 +170,11 @@
         }
         if (value.length < 8) {
             passwordError.textContent = 'Kata sandi harus minimal 8 karakter.';
+            passwordError.parentElement.style.display = 'block';
+            return false;
+        }
+        if (!/[A-Z]/.test(value)) {
+            passwordError.textContent = 'Kata sandi harus mengandung setidaknya satu huruf kapital.';
             passwordError.parentElement.style.display = 'block';
             return false;
         }

@@ -18,10 +18,10 @@
 
             <!-- Nama Lengkap -->
             <div style="margin-bottom: 15px;">
-                <label for="full_name" style="font-weight: bold; font-size: 14px;">Nama Lengkap</label>
+                <label for="full_name" style="font-weight: bold;">Nama Lengkap</label>
                 <input type="text" id="full_name" name="full_name" placeholder="Masukkan nama lengkap" required 
-                    style="width: 100%; padding: 10px 15px; font-size: 14px; border-radius: 30px; border: 2px solid #ccc; margin-top: 5px;">
-                <div id="name-error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                    style="width: 100%; padding: 10px 15px; border-radius: 30px; border: 2px solid #ccc; margin-top: 5px;">
+                <div id="name-error" style="display: none; color: red; margin-top: 5px;">
                     <i class="fas fa-exclamation-circle"></i></i>
                     <span></span>
                 </div>
@@ -29,10 +29,10 @@
 
             <!-- Nomor HP -->
             <div style="margin-bottom: 15px;">
-                <label for="phone" style="font-weight: bold; font-size: 14px;">Nomor HP</label>
+                <label for="phone" style="font-weight: bold;">Nomor HP</label>
                 <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor HP" required 
-                    style="width: 100%; padding: 10px 15px; font-size: 14px; border-radius: 30px; border: 2px solid #ccc; margin-top: 5px;">
-                <div id="phone-error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                    style="width: 100%; padding: 10px 15px; border-radius: 30px; border: 2px solid #ccc; margin-top: 5px;">
+                <div id="phone-error" style="display: none; color: red; margin-top: 5px;">
                     <i class="fas fa-exclamation-circle"></i></i>
                     <span></span>
                 </div>
@@ -40,13 +40,13 @@
 
             <!-- Kata Sandi -->
             <div style="margin-bottom: 15px;">
-                <label for="password" style="font-weight: bold; font-size: 14px;">Kata Sandi</label>
+                <label for="password" style="font-weight: bold;">Kata Sandi</label>
                 <div style="position: relative;">
                     <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required
-                        style="width: 100%; padding: 10px 15px; font-size: 14px; border-radius: 30px; border: 2px solid #ccc; padding-right: 50px; margin-top: 5px;">
+                        style="width: 100%; padding: 10px 15px; border-radius: 30px; border: 2px solid #ccc; padding-right: 50px; margin-top: 5px;">
                     <i class="far fa-eye" id="togglePassword" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
                 </div>
-                <div id="password-error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                <div id="password-error" style="display: none; color: red; margin-top: 5px;">
                     <i class="fas fa-exclamation-circle"></i></i>
                     <span></span>
                 </div>
@@ -54,13 +54,13 @@
 
             <!-- Konfirmasi Kata Sandi -->
             <div style="margin-bottom: 15px;">
-                <label for="password_confirmation" style="font-weight: bold; font-size: 14px;">Konfirmasi Kata Sandi</label>
+                <label for="password_confirmation" style="font-weight: bold;">Konfirmasi Kata Sandi</label>
                 <div style="position: relative;">
                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Masukkan ulang kata sandi" required
-                        style="width: 100%; padding: 10px 15px; font-size: 14px; border-radius: 30px; border: 2px solid #ccc; padding-right: 50px; margin-top: 5px;">
+                        style="width: 100%; padding: 10px 15px; border-radius: 30px; border: 2px solid #ccc; padding-right: 50px; margin-top: 5px;">
                     <i class="far fa-eye" id="togglePasswordConfirm" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888;"></i>
                 </div>
-                <div id="password-confirm-error" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                <div id="password-confirm-error" style="display: none; color: red; margin-top: 5px;">
                     <i class="fas fa-exclamation-circle"></i></i>
                     <span></span>
                 </div>
@@ -93,6 +93,10 @@
     const passwordConfirmInput = document.getElementById('password_confirmation');
     const submitButton = document.getElementById('submitButton');
     const termsCheckbox = document.getElementById('terms');
+    const passwordStrengthText = document.createElement('div'); // Create a div for password strength
+    passwordStrengthText.style.fontSize = '12px';
+    passwordStrengthText.style.marginTop = '5px';
+    passwordInput.parentNode.appendChild(passwordStrengthText); // Append it after the password input field
 
     // Error message elements
     const nameErrorIcon = document.getElementById('name-error').querySelector('i');
@@ -110,19 +114,19 @@
         if (value === '') {
             nameErrorText.textContent = 'Nama tidak boleh kosong.';
             nameErrorIcon.style.color = 'red';
-            nameErrorText.parentElement.style.display = 'flex';
+            nameErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (value.length <= 2) {
             nameErrorText.textContent = 'Nama harus lebih dari 2 karakter.';
             nameErrorIcon.style.color = 'red';
-            nameErrorText.parentElement.style.display = 'flex';
+            nameErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (!/^[A-Za-z\s]+$/.test(value)) {
             nameErrorText.textContent = 'Nama hanya boleh berisi huruf.';
             nameErrorIcon.style.color = 'red';
-            nameErrorText.parentElement.style.display = 'flex';
+            nameErrorText.parentElement.style.display = 'block';
             return false;
         }
         nameErrorText.parentElement.style.display = 'none';
@@ -134,19 +138,19 @@
         if (value === '') {
             phoneErrorText.textContent = 'Nomor HP tidak boleh kosong.';
             phoneErrorIcon.style.color = 'red';
-            phoneErrorText.parentElement.style.display = 'flex';
+            phoneErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (!/^[0-9]+$/.test(value)) {
             phoneErrorText.textContent = 'Nomor HP hanya boleh berisi angka.';
             phoneErrorIcon.style.color = 'red';
-            phoneErrorText.parentElement.style.display = 'flex';
+            phoneErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (value.length < 10) {
             phoneErrorText.textContent = 'Nomor telepon terlalu pendek.';
             phoneErrorIcon.style.color = 'red';
-            phoneErrorText.parentElement.style.display = 'flex';
+            phoneErrorText.parentElement.style.display = 'block';
             return false;
         }
         phoneErrorText.parentElement.style.display = 'none';
@@ -158,25 +162,31 @@
         if (value === '') {
             passwordErrorText.textContent = 'Kata sandi tidak boleh kosong.';
             passwordErrorIcon.style.color = 'red';
-            passwordErrorText.parentElement.style.display = 'flex';
+            passwordErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (value.length < 8) {
             passwordErrorText.textContent = 'Kata sandi harus minimal 8 karakter.';
             passwordErrorIcon.style.color = 'red';
-            passwordErrorText.parentElement.style.display = 'flex';
+            passwordErrorText.parentElement.style.display = 'block';
+            return false;
+        }
+        if (!/[A-Z]/.test(value)) {
+            passwordErrorText.textContent = 'Kata sandi harus mengandung setidaknya satu huruf kapital.';
+            passwordErrorIcon.style.color = 'red';
+            passwordErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (!/[A-Za-z]/.test(value) || !/[0-9]/.test(value)) {
             passwordErrorText.textContent = 'Kata sandi harus mengandung huruf dan angka.';
             passwordErrorIcon.style.color = 'red';
-            passwordErrorText.parentElement.style.display = 'flex';
+            passwordErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (!/[!@#$%^&*]/.test(value)) {
             passwordErrorText.textContent = 'Kata sandi harus mengandung karakter khusus.';
             passwordErrorIcon.style.color = 'red';
-            passwordErrorText.parentElement.style.display = 'flex';
+            passwordErrorText.parentElement.style.display = 'block';
             return false;
         }
         passwordErrorText.parentElement.style.display = 'none';
@@ -189,17 +199,40 @@
         if (confirmPassword === '') {
             passwordConfirmErrorText.textContent = 'Konfirmasi kata sandi tidak boleh kosong.';
             passwordConfirmErrorIcon.style.color = 'red';
-            passwordConfirmErrorText.parentElement.style.display = 'flex';
+            passwordConfirmErrorText.parentElement.style.display = 'block';
             return false;
         }
         if (password !== confirmPassword) {
             passwordConfirmErrorText.textContent = 'Kata sandi dan konfirmasi kata sandi tidak cocok.';
             passwordConfirmErrorIcon.style.color = 'red';
-            passwordConfirmErrorText.parentElement.style.display = 'flex';
+            passwordConfirmErrorText.parentElement.style.display = 'block';
             return false;
         }
         passwordConfirmErrorText.parentElement.style.display = 'none';
         return true;
+    }
+
+    // Password Strength Indicator
+    function checkPasswordStrength() {
+        const password = passwordInput.value;
+        let strength = 'Weak';
+        let color = 'red';
+
+        // Check for password strength
+        if (password.length >= 8) {
+            if (/[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password)) {
+                strength = 'Medium';
+                color = 'orange';
+            }
+            if (/[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password)) {
+                strength = 'Strong';
+                color = 'green';
+            }
+        }
+
+        // Display the password strength text
+        passwordStrengthText.textContent = `Kekuatan Kata Sandi: ${strength}`;
+        passwordStrengthText.style.color = color;
     }
 
     function checkFormValidity() {
@@ -208,6 +241,9 @@
         const isPasswordValid = validatePassword();
         const isPasswordConfirmValid = validatePasswordConfirmation();
         const isTermsChecked = termsCheckbox.checked;
+
+        // Check the password strength
+        checkPasswordStrength();
 
         submitButton.disabled = !(isNameValid && isPhoneValid && isPasswordValid && isPasswordConfirmValid && isTermsChecked);
         submitButton.style.backgroundColor = submitButton.disabled ? '#ccc' : '#28a745';
@@ -234,5 +270,7 @@
         this.classList.toggle('fa-eye-slash');
     });
 </script>
+
+
 
 @endsection

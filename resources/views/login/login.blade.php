@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +14,11 @@
         <form>
             <div class="input-field">
                 <label for="phone">Nomor HP</label>
-                <input type="text" id="phone" placeholder="Masukkan nomor HP">
+                <input type="text" id="phone" placeholder="Masukkan nomor HP" required>
             </div>
             <div class="input-field">
                 <label for="password">Kata Sandi</label>
-                <input type="password" id="password" placeholder="Masukkan kata sandi">
+                <input type="password" id="password" placeholder="Masukkan kata sandi" required>
                 <button type="button" class="toggle-password">
                     <img src="https://img.icons8.com/material-outlined/24/000000/visible.png" class="eye-open" alt="Mata Terbuka" />
                     <img src="https://img.icons8.com/material-outlined/24/000000/invisible.png" class="eye-closed" alt="Mata Tertutup" style="display:none;" />
@@ -58,4 +56,3 @@
     </script>
 </body>
 </html>
->>>>>>> 3e8661d5444703bbcb38f5dcb2f6213e1e7ad6b9

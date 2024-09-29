@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'WasteLess')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="/resource/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
 
     <style>
         /* Untuk tata letak dan style utama */
         body, html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            font-family: 'Poppins', sans-serif;
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
         }
 
         .container {
@@ -74,8 +75,7 @@
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: white;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+            width: 400px
         }
 
         .footer-logo img {

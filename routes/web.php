@@ -7,17 +7,28 @@ use App\Http\Controllers\SupermarketController;
 Route::get('/', function () {
     return view('register');
 });
+
 Route::get('/signin', function () {
-    return view('login.signin');
+    return view('login.login');
 });
-Route::get('/signup', function () {
-    return view('login.signup');
+
+Route::get('/signin/otp', function () {
+    return view('login.otp');
+});
+
+
+Route::get('/homepage', function () {
     return view('homepage.userhomepage');
+});
+
+Route::get('/profile', function () {
+    return view('homepage.profilepage');
 });
 
 Route::get('/order', function () {
     return view('homepage.order');
 })->name('order');
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');

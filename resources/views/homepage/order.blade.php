@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Summary</title>
+    <title>Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/orderpage.css">
     <script src="js/orderpage.js"></script>
 </head>
 <body>
-    <div class="container-head" onclick="window.location.href='{{ url('/') }}'">
+    <div class="container-head" onclick="window.location.href='{{ url('/homepage') }}'">
         <img src="images/backarrow.png" alt="backarrow">
         <h1>Keranjang Anda</h1>
     </div>
@@ -42,9 +43,9 @@
     </div>
 
     <div class="bottom-nav">
-        <button class="nav-item" onclick="window.location.href='{{ url('/') }}'"><img src="images/homeicon.png" alt="Home" /></button>
-        <button class="nav-item active"><img src="images/ordericon.png" alt="Cart" /></button>
-        <button class="nav-item"><img src="images/profileicon.png" alt="Profile" /></button>
+        <button class="nav-item" onclick="window.location.href='{{ url('/homepage') }}'"><img src="images/homeicon.png" alt="Home" /></button>
+        <button class="nav-item active" onclick="window.location.href='{{ url('/order') }}'"><img src="images/ordericon.png" alt="Cart" /></button>
+        <button class="nav-item" onclick="window.location.href='{{ url('/profile') }}'"><img src="images/profileicon.png" alt="Profile" /></button>
     </div>
 </body>
 </html>

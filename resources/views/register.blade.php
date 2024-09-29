@@ -3,6 +3,7 @@
 @section('title', 'Daftar Akun')
 
 @section('content')
+
 <div class="box">
     <h1>Daftar Sebagai</h1>
     <p>Pilih jenis akun Anda untuk melanjutkan</p>

@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WasteLess-Sign in</title>
-    <link href="{{ asset('css/otp.css') }}" rel="stylesheet">
+    <title>Verifikasi OTP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/otp.css">
 </head>
 <body>
-    <div class="login-container">
-        <form class="login-form" method="POST" action="">
-            @csrf
-            <h2>OTP</h2>
-            
-            <div class="input-container">
-                <input type="number" name="number" placeholder="OTP" required>
-            </div>
-
-            <button type="submit" class="login-btn">Log In</button>
-        </form>
+    <div class="verification-container">
+        <img src="images\Left arrow button.png" alt="arrow">
+        <h1>Verifikasi</h1>
+        <p>Masukan Kode OTP</p>
+        <div class="otp-input-container">
+        <div class="otp-single-input-container">
+            <input type="text" maxlength="6" class="otp-single-line" placeholder="------" oninput="formatOTP(this)">
+        </div>
+        </div>
+        <button class="submit-btn">Masuk</button>
+        <p class="terms">
+            Saya menyetujui <a href="#">Ketentuan layanan</a> dan <a href="#">Kebijakan privasi</a> WasteLess.
+        </p>
+        <div class="brand-logo">
+            <img src="images\WasteLesslogo.png" alt="WasteLess Logo">
+        </div>
     </div>
-    <script src="{{ asset('') }}"></script>
 </body>
 </html>

@@ -1,63 +1,114 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #1E4316;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F4F4F4;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.login-container {
-    margin-top: 20px;
-    border-radius: 8px;
-    padding: 40px 30px;
-    text-align: center;
-}
-
-h2 {
-    margin-top: 60px;
-    font-size: 36px;
-    color: #ffffff;
-    margin-bottom: 38px;
-    text-align: left;
-    margin-left: 20px;
-}
-
-
-input[type="number"]{
+.verification-container {
+    background-color: #FFF;
+    padding: 10px;
     width: 90%;
-    padding: 18px 14px;
-    border-radius: 100px;
-    border: 3px solid #ddd;
-    outline: none;
-    font-size: 16px;
-    border-color: #A99A29;
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    position: bottom;
+    text-align: left;
+}
+
+.back-arrow {
+    position: bottom;
+    top: 20px;
+    left: 20px;
+    font-size: 400px;
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    color: #666;
     margin-bottom: 20px;
-    background-color: #1E4316; 
-    color: #ffffff; 
 }
 
-input[type="number"]::placeholder {
-    color: #ffffff;
-    padding-left: 20px;
+.otp-input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
-.login-btn {
-    width: 80%;
-    padding: 15px;
-    margin: 10px;
+.otp-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 10px;
+    border: none; /* Removed border */
+    border-bottom: 2px solid #ccc; /* Optional: Just a bottom border */
+    outline: none;
+    transition: border-bottom 0.3s ease;
+}
+
+.otp-input:focus {
+    border-bottom: 2px solid #00C853;
+}
+
+.otp-single-line::placeholder {
+    letter-spacing: 20px;
+    color: #ccc;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #00C853;
     border: none;
-    border-radius: 100px;
-    font-size: 20px;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
     cursor: pointer;
-    background-color: #A99A29; 
-    color: #f8f8f8;
+    transition: background-color 0.3s;
 }
 
-.login-btn:hover {
-    background-color: #c9b35c; 
+.submit-btn:hover {
+    background-color: #008C4A;
+}
+
+.terms {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.terms a {
+    color: #00C853;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.brand-logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.brand-logo img {
+    width: 100px;
+    height: auto;
 }

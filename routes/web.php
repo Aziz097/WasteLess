@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/search', [ProductsController::class, 'index'])->name('search');
+
+Route::get('/searchfilter', [ProductsController::class, 'search'])->name('search');

@@ -15,17 +15,34 @@ class ProductsSeeder extends Seeder
      */
     public function run(): void
     {
-        Products::factory()->create([
-            'nama' => 'Product 1',
-            'deskripsi' => 'Deskripsi 1',
-            'variasi' => 'Variasi 1',
+        Products::firstOrCreate(
+            ['nama' => 'Fathan Kurniawan'],
+            [
+            'deskripsi' => 'Manusia',
+            'variasi' => 'Orang',
             'harga' => 10000,
             'diskon' => 0,
-            'stok' => 10,
-            'masa_simpan' => '1 tahun',
+            'stok' => 1,
+            'masa_simpan' => '30 hari',
             'expired' => now(),
             'berat' => 1,
-            'kode_BPOM' => 1234
+            'kode_BPOM' => 3441
         ]);
+
+        Products::firstOrCreate(
+            ['kode_BPOM' => 3315],
+            [
+                'nama' => 'Rahmat Aldi',
+                'deskripsi' => 'Manusia',
+                'variasi' => 'Orang',
+                'harga' => 120000,
+                'diskon' => 0,
+                'stok' => 1,
+                'masa_simpan' => '3 bulan',
+                'expired' => now(),
+                'berat' => 2,
+                'jumlah_beli' => 10
+            ]
+        );
     }
 }

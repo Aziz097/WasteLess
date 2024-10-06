@@ -29,9 +29,29 @@ class ProductsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        $query = Products::query();
+
+        // Jika ada parameter search
+        if ($request->filled('search')) {
+            $query->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+        }
+
+        // Jika ada filter termurah
+        if ($request->input('filter') == 'termurah') {
+            $query->orderBy('harga', 'asc');
+        }
+
+        // Jika ada filter terlaris
+        if ($request->input('filter') == 'terlaris') {
+            $query->orderBy('jumlah_beli', 'desc'); // Urutkan berdasarkan jumlah terjual terbanyak
+        }
+
+        // Ambil hasil pencarian
+        $results = $query->get();
+
+        return view('search', compact('results'));
     }
 
     /**

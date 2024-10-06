@@ -7,16 +7,26 @@
 </head>
 <body>
     <form action="{{ route('search') }}" method="GET">
-        <input type="text" name="search" placeholder="Search Products" value="{{ request()->input('search') }}">
+        <input type="text" name="search" placeholder="Search Products" value="{{ request('search') }}">
         <button type="submit">Search</button>
     </form>
-
+    
+    <div style="margin-top: 20px;">
+        <!-- Filter Buttons -->
+        <a href="{{ route('search', ['search' => request('search'), 'filter' => 'terdekat']) }}" class="btn btn-primary {{ request('filter') == 'terdekat' ? 'active' : '' }}">Terdekat</a>
+        <a href="{{ route('search', ['search' => request('search'), 'filter' => 'termurah']) }}" class="btn btn-primary {{ request('filter') == 'termurah' ? 'active' : '' }}">Termurah</a>
+        <a href="{{ route('search', ['search' => request('search'), 'filter' => 'terlaris']) }}" class="btn btn-primary {{ request('filter') == 'terlaris' ? 'active' : '' }}">Terlaris</a>
+    </div>
+    
+    <!-- Results -->
     @if (count($results) > 0)
-        @foreach ($results as $result)
-            <p>Produk Ditemukan</p>
-        @endforeach
+        <ul>
+            @foreach ($results as $result)
+                <li>{{ $result->nama }} - Harga: {{ $result->harga }} - Jumlah terjual: {{ $result->jumlah_beli }}</li>
+            @endforeach
+        </ul>
     @else
-        <p>Produk Tidak Ditemukan</p>
-    @endif
+        <p>No results found.</p>
+    @endif    
 </body>
 </html>

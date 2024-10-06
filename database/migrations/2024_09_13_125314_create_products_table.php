@@ -25,6 +25,7 @@ return new class extends Migration
             $table->decimal('berat');
             $table->integer('kode_BPOM');
             $table->timestamps();
+            $table->integer('jumlah_beli')->default(0);
         });
     }
 

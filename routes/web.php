@@ -1,60 +1,86 @@
 <?php
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupermarketController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 // Landing Page and Authentication Routes
+
 Route::get('/', function () {
-    return view('register');
+    return view('splashscreen.splashscreen');
 });
 
 Route::get('/signin', function () {
     return view('login.login');
+})->name(name: 'login');
+
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/signup', function () {
+    return view('signup.signup');
+})->name('register');
+
+Route::get('/signup/customer', function () {
+    return view('signup.signupcustomer');
 });
 
-Route::get('/signin/otp', function () {
-    return view('login.otp');
+Route::post('/register/customer', [RegisterController::class, 'registerCustomer'])->name('register.customer.post');
+
+Route::get('/signup/supermarket', function () {
+    return view('signup.signupsupermarket');
+});
+
+Route::post('/register/supermarket', action: [RegisterController::class, 'registerSupermarket'])->name('register.supermarket.post');
+
+Route::get('/signup/supermarket/npwp', function () {
+    return view('signup.npwp');
 });
 
 
-Route::get('/homepage', function () {
+Route::get('/home', function () {
     return view('homepage.userhomepage');
-});
-
-Route::get('/profile', function () {
-    return view('homepage.profilepage');
 });
 
 Route::get('/order', function () {
     return view('homepage.order');
-})->name('order');
+});
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+Route::get('/order/checkout', function () {
+    return view('homepage.checkout');
+});
 
-// Supermarket Signup Routes
-// Step 1: Display the supermarket registration form
-Route::get('/signup/supermarket', [SupermarketController::class, 'showStep1'])
-    ->name('signup.supermarket');
+Route::get('/order/status', function () {
+    return view('homepage.status');
+});
 
-// Step 1: Handle the supermarket registration form submission
-Route::post('/signup/supermarket', [SupermarketController::class, 'processStep1'])
-    ->name('supermarket.register');
+Route::get('/order/status/detail-order', function () {
+    return view('homepage.detailorder');
+});
 
-// Step 2: Display the continuation form (step 2)
-Route::get('/signup/supermarket/step2', [SupermarketController::class, 'showStep2'])
-    ->name('signup.supermarket.step2');
+Route::get('/profile', [CustomerController::class, 'index'])->name('profile');
 
-// Step 2: Handle the form submission for step 2
-Route::post('/signup/supermarket/step2', [SupermarketController::class, 'processStep2'])
-    ->name('supermarket.register.stage2');
 
-// Customer Signup Routes
-Route::get('/signup/customer', [CustomerController::class, 'showForm'])
-    ->name('signup.customer');
+Route::get('/supermarket-home', [SupermarketController::class, 'index'])->name('supermarket-home');
 
-// Handle customer registration form submission
-Route::post('/register/customer', [CustomerController::class, 'register'])
-    ->name('customer.register');
+
+Route::get('/supermarket/donasi', function () {
+    return view('supermarkethomepage.donasi');
+});
+
+Route::get('/supermarket/donasi/detail', function () {
+    return view('supermarkethomepage.donasidetail');
+});
+
+Route::get('/supermarket/donasi/succes', function () {
+    return view('supermarkethomepage.donasisucces');
+});
+
+Route::get('/supermarket/produk', function () {
+    return view('supermarkethomepage.produk');
+});

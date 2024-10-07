@@ -9,7 +9,7 @@
     <script src="js/orderpage.js"></script>
 </head>
 <body>
-    <div class="container-head" onclick="window.location.href='{{ url('/homepage') }}'">
+    <div class="container-head" onclick="window.location.href='{{ url('/home') }}'">
         <img src="images/backarrow.png" alt="backarrow">
         <h1>Keranjang Anda</h1>
     </div>
@@ -34,7 +34,7 @@
             <span>Subtotal</span>
             <span class="subtotal-amount">Rp<span id="subtotal">51.000</span></span>
         </div>
-        <button class="checkout-button">Check out</button>
+        <button class="checkout-button" onclick="window.location.href='{{ url('/order/checkout') }}'">Check out</button>
     </div>
     
     <div class="order-summary-container">
@@ -43,7 +43,7 @@
     </div>
 
     <div class="bottom-nav">
-        <button class="nav-item" onclick="window.location.href='{{ url('/homepage') }}'"><img src="images/homeicon.png" alt="Home" /></button>
+        <button class="nav-item" onclick="window.location.href='{{ url('/home') }}'"><img src="images/homeicon.png" alt="Home" /></button>
         <button class="nav-item active" onclick="window.location.href='{{ url('/order') }}'"><img src="images/ordericon.png" alt="Cart" /></button>
         <button class="nav-item" onclick="window.location.href='{{ url('/profile') }}'"><img src="images/profileicon.png" alt="Profile" /></button>
     </div>

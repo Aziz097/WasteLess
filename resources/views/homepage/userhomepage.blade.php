@@ -45,7 +45,7 @@
     </div>
     
     <div class="bottom-nav">
-        <button class="nav-item active" onclick="window.location.href='{{ url('/homepage') }}'"><img src="images/homeicon.png" alt="Home" /></button>
+        <button class="nav-item active" onclick="window.location.href='{{ url('/home') }}'"><img src="images/homeicon.png" alt="Home" /></button>
         <button class="nav-item" onclick="window.location.href='{{ url('/order') }}'"><img src="images/ordericon.png" alt="Cart" /></button>
         <button class="nav-item" onclick="window.location.href='{{ url('/profile') }}'"><img src="images/profileicon.png" alt="Profile" /></button>
     </div>

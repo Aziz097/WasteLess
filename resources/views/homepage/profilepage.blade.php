@@ -11,40 +11,53 @@
     <div class="profile-menu">
         <div class="profile-header">
             <div class="profile-icon">
-                <i class="fas fa-user-circle"></i>
+                <img src="images/iconprofile.png" alt="iconprofile">
             </div>
             <div class="profile-info">
-                <div class="name">Nama Akun</div>
-                <div class="phone">No. Telepon</div>
+                <div class="name">{{ $customer->name }}</div>
+                <div class="phone">{{ $customer->phone }}</div>
             </div>
         </div>
         
         <div class="menu-section">
             <h3>Menu Profile</h3>
             <ul>
-                <li><i class="fas fa-history"></i> Riwayat Pembelian</li>
-                <li><i class="fas fa-question-circle"></i> FAQ</li>
+                <li onclick="window.location.href='{{ url('/order/status') }}'"><img src="images/historyicon.png" alt="history icon">
+                    <i class="fas fa-history"></i> Riwayat Pembelian
+                </li>
+                <li><img src="images/faqicon.png" alt="faq icon">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </li>
             </ul>
         </div>
         
         <div class="menu-section">
             <h3>Pengaturan</h3>
             <ul>
-                <li><i class="fas fa-key"></i> Ubah Kata Sandi</li>
-                <li><i class="fas fa-bell"></i> Pengaturan Notifikasi</li>
+                <li><img src="images/changepasswordicon.png" alt="change password icon">
+                    <i class="fas fa-key"></i> Ubah Kata Sandi</li>
+                <li><img src="images/settingicon.png" alt="faq icon">
+                    <i class="fas fa-bell"></i> Pengaturan Notifikasi</li>
             </ul>
         </div>
         
         <div class="menu-section">
             <ul>
-                <li><i class="fas fa-info-circle"></i> Tentang Aplikasi</li>
-                <li><i class="fas fa-sign-out-alt"></i> Log Out</li>
+                <li><img src="images/abouticon.png" alt="about icon">
+                    <i class="fas fa-info-circle"></i> Tentang Aplikasi</li>
+                <li><img src="images/logouticon.png" alt="logout icon">
+                    <i class="fas fa-sign-out-alt"></i> <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </ul>
         </div>
     </div>
 
     <div class="bottom-nav">
-        <button class="nav-item" onclick="window.location.href='{{ url('/homepage') }}'"><img src="images/homeicon.png" alt="Home" /></button>
+        <button class="nav-item" onclick="window.location.href='{{ url('/home') }}'"><img src="images/homeicon.png" alt="Home" /></button>
         <button class="nav-item" onclick="window.location.href='{{ url('/order') }}'"><img src="images/ordericon.png" alt="Cart" /></button>
         <button class="nav-item active" onclick="window.location.href='{{ url('/profile') }}'"><img src="images/profileicon.png" alt="Profile" /></button>
     </div>

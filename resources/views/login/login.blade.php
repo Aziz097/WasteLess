@@ -9,21 +9,22 @@
 </head>
 <body>
     <div class="login-container">
-    <img src="images\Left arrow button.png" alt="arrow">
+    <img src="images\Left arrow button.png" alt="arrow" onclick="window.location.href='{{ url('/') }}'">
         <h1>Masuk</h1>
-        <form>
+        <form method="POST" action="{{ route('login.post') }}">
+            @csrf
             <div class="input-field">
                 <label for="phone">Nomor HP</label>
-                <input type="text" id="phone" placeholder="Masukkan nomor HP" required>
+                <input type="text" name="phone" id="phone" placeholder="Masukkan nomor HP" required>
             </div>
             <div class="input-field">
                 <label for="password">Kata Sandi</label>
-                <input type="password" id="password" placeholder="Masukkan kata sandi" required>
+                <input type="password" name="password" id="password" placeholder="Masukkan kata sandi" required>
                 <button type="button" class="toggle-password">
                     <img src="https://img.icons8.com/material-outlined/24/000000/visible.png" class="eye-open" alt="Mata Terbuka" />
                     <img src="https://img.icons8.com/material-outlined/24/000000/invisible.png" class="eye-closed" alt="Mata Tertutup" style="display:none;" />
                 </button>
-            </div>
+            </div>  
             <button type="submit" class="submit-btn">Lanjut</button>
         </form>
         <p class="terms">
@@ -53,6 +54,7 @@
                 eyeClosed.style.display = 'none';
             }
         });
+        
     </script>
 </body>
 </html>

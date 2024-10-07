@@ -5,9 +5,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupermarketController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductImageController;
-use Illuminate\Support\Facades\Auth;
 
 
 // Landing Page and Authentication Routes
@@ -86,9 +83,3 @@ Route::get('/supermarket/donasi/succes', function () {
 Route::get('/supermarket/produk', function () {
     return view('supermarkethomepage.produk');
 });
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::post('products/{product}/archive', [ProductController::class, 'archive'])->name('products.archive');
-Route::delete('products/images/{image}', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
-Route::put('products/{id}', [ProductController::class, 'update'])->name('products.update');

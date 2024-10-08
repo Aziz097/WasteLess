@@ -33,19 +33,23 @@ class ProductsController extends Controller
     {
         $query = Products::query();
 
-        // Jika ada parameter search
+        // Filter search
         if ($request->filled('search')) {
             $query->where('nama', 'LIKE', '%' . $request->input('search') . '%');
         }
 
-        // Jika ada filter termurah
+        // Filter termurah
         if ($request->input('filter') == 'termurah') {
             $query->orderBy('harga', 'asc');
         }
 
-        // Jika ada filter terlaris
+        // Filter terlaris
         if ($request->input('filter') == 'terlaris') {
             $query->orderBy('jumlah_beli', 'desc'); // Urutkan berdasarkan jumlah terjual terbanyak
+        }
+        // Filter terdekat (random)   
+        if ($request->input('filter') == 'terdekat') {
+            $query->inRandomOrder();
         }
 
         // Ambil hasil pencarian

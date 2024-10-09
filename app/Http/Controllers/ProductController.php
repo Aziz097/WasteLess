@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-//use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Supermarket;
 use Illuminate\Http\Request;
-use App\Models\Products;
 
 class ProductsController extends Controller
 {
@@ -13,29 +13,30 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $request->input('search');
+        // Lokasi pengguna
+        $userLatitude = $request->input('latitude');
+        $userLongitude = $request->input('longitude');
 
-        if ($query) {
-            // Cari produk berdasarkan nama
-            $results = Products::where("nama",  "like", "%$query%")->get();
-        } else {
-            // Tampilkan semua produk jika tidak ada pencarian
-            $results = Products::all();
-        }
+        // Radius lokasi dengan pengguna 5km
+        $supermarkets = Supermarket::selectRaw(
+            "id, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance",
+            [$userLatitude, $userLongitude, $userLatitude]
+        )
+        ->having('distance', '<=', 5)
+        ->get();
 
-        return view('search', compact('results'));
-    }
+        // Filter pencarian
+        $query = Product::query();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function search(Request $request)
-    {
-        $query = Products::query();
-
-        // Filter search
+        // Pencarian berdasarkan nama produk
         if ($request->filled('search')) {
             $query->where('nama', 'LIKE', '%' . $request->input('search') . '%');
+        }
+
+        // Filter produk diskon di supermarket terdekat dan segera kadaluarsa
+        if ($request->input('filter') == 'diskon') {
+            $query->whereIn('supermarket_id', $supermarkets->pluck('id'))
+                  ->where('expired', '<=', now()->addDays(7));
         }
 
         // Filter termurah
@@ -45,9 +46,10 @@ class ProductsController extends Controller
 
         // Filter terlaris
         if ($request->input('filter') == 'terlaris') {
-            $query->orderBy('jumlah_beli', 'desc'); // Urutkan berdasarkan jumlah terjual terbanyak
+            $query->orderBy('jumlah_beli', 'desc');
         }
-        // Filter terdekat (random)   
+
+        // Filter terdekat
         if ($request->input('filter') == 'terdekat') {
             $query->inRandomOrder();
         }
@@ -56,48 +58,5 @@ class ProductsController extends Controller
         $results = $query->get();
 
         return view('search', compact('results'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request)
-    {
-        // $search = $request->input('search');
-        // $results = Products::where('nama', 'like', "%$search%")->get();
-
-        // return view('products.index', ['results' => $results]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

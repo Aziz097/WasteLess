@@ -25,20 +25,13 @@ class Products extends Model
         'kode_BPOM',
         'jumlah_beli'
     ];
-
-    // Override fungsi boot
-    // protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     // Event yang terjadi sebelum data disimpan ke database
-    //     static::creating(function ($model) {
-    //         // Generate random 4 digit integer dan pastikan unik
-    //         do {
-    //             $id = random_int(1000, 9999);
-    //         } while (Products::where('id', $id)->exists());
-
-    //         $model->id = $id;
-    //     });
-    // }
+    // Menghitung harga diskon jika mendekati tanggal kadaluarsa
+    public function getDiscountedPriceAttribute()
+    {
+        $expiryThreshold = now()->addDays(7); // Batas produk yang mendekati kadaluarsa (3 hari)
+        if ($this->expired <= $expiryThreshold) {
+            return $this->harga * 0.65; // Diskon 35%
+        }
+        return $this->harga;
+    }
 }

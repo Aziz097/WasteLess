@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', [ProductsController::class, 'index'])->name('search');
+Route::get('/search', [ProductController::class, 'index'])->name('search');
 
-Route::get('/searchfilter', [ProductsController::class, 'search'])->name('search');
+Route::get('/searchfilter', [ProductController::class, 'search'])->name('search');

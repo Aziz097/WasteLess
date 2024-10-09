@@ -6,16 +6,16 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Products; 
+use App\Models\Product; 
 
-class ProductsSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Products::firstOrCreate(
+        Product::firstOrCreate(
             ['nama' => 'Fathan Kurniawan'],
             [
             'deskripsi' => 'Manusia',
@@ -29,7 +29,7 @@ class ProductsSeeder extends Seeder
             'kode_BPOM' => 3441
         ]);
 
-        Products::firstOrCreate(
+        Product::firstOrCreate(
             ['kode_BPOM' => 3315],
             [
                 'nama' => 'Rahmat Aldi',

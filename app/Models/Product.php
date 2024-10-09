@@ -1,14 +1,30 @@
 <?php
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-
-class Product extends Model
+class Products extends Model
 {
-    protected $fillable = ['nama', 'harga', 'expired', 'supermarket_id'];
+    use HasFactory;
+    protected $primaryKey = 'id';
+    protected $keyType = 'integer';
 
+    protected $fillable = [
+        'nama',
+        'deskripsi',
+        'variasi',
+        'harga',
+        'diskon',
+        'stok',
+        'masa_simpan',
+        'expired',
+        'berat',
+        'kode_BPOM',
+        'jumlah_beli'
+    ];
     // Menghitung harga diskon jika mendekati tanggal kadaluarsa
     public function getDiscountedPriceAttribute()
     {
@@ -17,15 +33,5 @@ class Product extends Model
             return $this->harga * 0.65; // Diskon 35%
         }
         return $this->harga;
-    }
-
-    // Event untuk meng-generate id random sebelum create
-    protected static function booted()
-    {
-        static::creating(function ($product) {
-            if (!$product->id) {
-                $product->id = random_int(1000, 9999); // Random ID 4 digit
-            }
-        });
     }
 }

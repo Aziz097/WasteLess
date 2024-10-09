@@ -27,7 +27,7 @@ class ProductController extends Controller
             ->where('expired', '<=', now()->addDays(7))
             ->get();
 
-        return view('products.index', compact('produk_diskon'));
+        return view('product.index', compact('produk_diskon'));
     }
 }
 

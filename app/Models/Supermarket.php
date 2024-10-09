@@ -15,7 +15,9 @@ class Supermarket extends Model
         'nama_lengkap',
         'no_hp',
         'otp_code',
-        'password'
+        'password',
+        'latitude',
+        'longitude',
     ];
 
     public function products()

@@ -87,6 +87,19 @@
     @endforeach
 </div>
 
+<!-- Bagian untuk menampilkan produk diskon di supermarket terdekat -->
+<h2>Produk Diskon di Supermarket Terdekat</h2>
+
+@if($produk_diskon->isEmpty())
+    <p>Tidak ada produk diskon di dekat lokasi Anda.</p>
+@else
+    <ul>
+        @foreach($produk_diskon as $product)
+            <li>{{ $product->nama_produk }} - Harga setelah diskon: Rp{{ number_format($product->getDiscountedPriceAttribute(), 2) }}</li>
+        @endforeach
+    </ul>
+@endif
+
 <div>{{ $products->links() }}</div>
 
 </body>

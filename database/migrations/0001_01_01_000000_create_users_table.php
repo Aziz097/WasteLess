@@ -11,22 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        // Tabel users
+        Schema::create('Users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('name'); // nama lengkap atau nama supermarket
+            $table->string('phone')->unique(); // nomor HP
             $table->string('password');
-            $table->rememberToken();
+            $table->string('role'); // role untuk customer atau supermarket
+            $table->string('npwp')->nullable(); // NPWP hanya untuk supermarket
+            $table->string('address')->nullable(); // alamat hanya untuk supermarket
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
-
+        // Tabel sessions
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -42,8 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('users');
     }
 };

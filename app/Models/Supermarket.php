@@ -1,20 +1,27 @@
 <?php
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Supermarket extends Model
 {
-    protected $fillable = ['nama', 'latitude', 'longitude'];
+    use HasFactory;
 
-    // Event untuk meng-generate id random sebelum create
-    protected static function booted()
+    protected $fillable = [
+        'nama_supermarket',
+        'alamat',
+        'nama_lengkap',
+        'no_hp',
+        'otp_code',
+        'password',
+        'latitude',
+        'longitude',
+    ];
+
+    public function products()
     {
-        static::creating(function ($supermarket) {
-            if (!$supermarket->id) {
-                $supermarket->id = random_int(1000, 9999); // Random ID 4 digit
-            }
-        });
+        return $this->hasMany(Product::class);
     }
 }

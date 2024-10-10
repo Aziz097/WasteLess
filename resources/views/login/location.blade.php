@@ -15,7 +15,7 @@
             <img src="/images/loc.png" alt="loc" class="loc-image">
         </div>
         <div class="button-loc">
-            <button class="loc-button">Aktifkan lokasi</button>
+            <button class="loc-button" onclick="window.location.href='{{ url('/home') }}'">Aktifkan lokasi</button>
         </div>
 </body>
 </html>

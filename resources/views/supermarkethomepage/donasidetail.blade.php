@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Donasi</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/css/donasidetail.css">
 </head>
 <body>
@@ -25,12 +23,12 @@
             </div>
             <div class="address-content">
                 <img src="/images/locicon.png" alt="locicon">
-                <p>Jl. Terusan Ryacudu, Way Huwi, Kec. Jati Agung, Kabupaten Lampung Selatan, Lampung 35365</p>
+                <p>{{ $product->supermarket_address }}</p> <!-- Menampilkan alamat produk -->
             </div>
         </div>
 
         <div class="card">
-            <p>Plilih lembaga sosial</p>
+            <p>Pilih lembaga sosial</p>
             <div class="payment-option">
                 <label for="credit-debit">lembaga Sosial A</label>
                 <input type="radio" name="payment-method" id="credit-debit" value="Kartu kredit atau debit">
@@ -60,16 +58,21 @@
         <div class="product">
             <div class="product-card">
                 <div class="product-image">
-                <img src="/images/logowasteless.png" alt="Product Image">
+                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->product_name }}">
                 </div>
                 <div class="product-info">
-                    <p class="product-title">Sari Roti Sobek Cokelat Sarikaya</p>
-                    <p class="old-price">Rp20.000</p>
-                    <p class="new-price">Rp17.000</p>
+                    <p class="product-title">{{ $product->product_name }}</p>
+                    <p class="old-price">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                    <p class="new-price">Rp{{ number_format($product->discount_price ?? $product->price, 0, ',', '.') }}</p>
                 </div>
             </div>
         </div>
 
-        <button class="confirm-button" onclick="window.location.href='{{ url('/') }}'">Donasikan</button>
+        <form action="{{ route('donation.delete', $product->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="confirm-button">Donasikan</button>
+        </form>
     </div>
 </body>
+</html>

@@ -27,13 +27,13 @@
         </div>
 
         <div class="icon-grid">
-            <div class="grid-item">
+            <div class="grid-item" onclick="window.location.href='{{ url('/supermarket/donasi') }}'">
                 <img src="/images/donasiicon.png" alt="Donasi Icon">
-                <p onclick="window.location.href='{{ url('/supermarket/donasi') }}'">Donasi</p>
+                <p>Donasi</p>
             </div>
             <div class="grid-item">
                 <img src="/images/produkicon.png" alt="Produk Icon">
-                <p>Produk</p>
+                <p onclick="window.location.href='{{ url('/supermarket/produk') }}'">Produk</p>
             </div>
             <div class="grid-item">
                 <img src="/images/pesananicon.png" alt="Pesanan Icon">

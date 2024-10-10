@@ -44,30 +44,27 @@
             </label>
         </div>
 
+        @foreach($cartItems as $item)
         <div class="product-card">
-            <div class="discount-badge">-15%</div>
-            <div class="product-image">
-            <img src="/images/logowasteless.png" alt="Product Image">
-            </div>
             <div class="product-info">
-                <p class="product-title">Sari Roti Sobek Cokelat Sarikaya</p>
-                <p class="old-price">Rp20.000</p>
-                <p class="new-price">Rp17.000</p>
+                <p class="product-title">{{ $item->product_name }}</p>
+                <p class="new-price">Rp{{ number_format($item->price, 0, ',', '.') }}</p>
             </div>
             <div class="product-actions">
-                <p>2</p>
+                <p>{{ $item->quantity }}</p>
             </div>
         </div>
+        @endforeach
 
         <div class="card">
             <h2>Ringkasan Pembayaran</h2>
             <div class="row">
                 <span>Subtotal produk</span>
-                <span class="price">Rp20.000</span>
+                <span class="price">Rp{{ number_format($subtotal, 0, ',', '.') }}</span>
             </div>
             <div class="row">
                 <span class="discount">Diskon</span>
-                <span class="price discount">Rp-3.000</span>
+                <span class="price discount">15%</span>
             </div>
             <div class="row">
                 <span>Biaya aplikasi</span>
@@ -76,7 +73,7 @@
             <hr>
             <div class="row total">
                 <span>Total pembayaran</span>
-                <span class="price total">Rp18.000</span>
+                <span class="price total">Rp{{ number_format($subtotal - ($subtotal * 0.15) + 1000, 0, ',', '.') }}</span>
             </div>
         </div>
 
@@ -114,7 +111,7 @@
             </div>
         </div>
 
-            <button class="confirm-button" onclick="window.location.href='{{ url('/order') }}'">Selesaikan pesanan</button>
+            <button class="confirm-button" onclick="window.location.href='{{ url('/cart/clear') }}'">Selesaikan pesanan</button>
     </div>
 
 </body>

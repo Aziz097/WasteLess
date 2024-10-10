@@ -9,29 +9,30 @@
 </head>
 <body>
     <div class="container">
-            <div class="icon">
-                <img src="/images/Left arrow button.png" alt="User Icon" onclick="window.location.href='{{ url('/supermarket-home') }}'">
-            </div>
-            <div class="alert">
-                <img src="/images/alerticon.png" alt="alert icon">
-                <p><b>Produk hampir kadaluarsa!</b></p>
-            </div>
-            <div class="product">
-                <div class="product-card">
-                    <div class="product-image">
-                    <img src="/images/logowasteless.png" alt="Product Image">
-                    </div>
-                    <div class="product-info">
-                        <p class="product-title">Sari Roti Sobek Cokelat Sarikaya</p>
-                        <p class="old-price">Rp20.000</p>
-                        <p class="new-price">Rp17.000</p>
-                    </div>
-                    <div class="product-actions" onclick="window.location.href='{{ url('/supermarket/donasi/detail') }}'">
-                        <p><b>DONASIKAN</b></p>
-                    </div>
+        <div class="icon">
+            <img src="/images/Left arrow button.png" alt="Back Button" onclick="window.location.href='{{ url('/supermarket-home') }}'">
+        </div>
+
+        <div class="alert">
+            <img src="/images/alerticon.png" alt="Alert Icon">
+            <p><b>Produk hampir kadaluarsa!</b></p>
+        </div>
+
+        @foreach($almostExpiredProducts as $product)
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->product_name }}">
+                </div>
+                <div class="product-info">
+                    <p class="product-title">{{ $product->product_name }}</p>
+                    <p class="old-price">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                    <p class="new-price">Rp{{ number_format($product->discount_price ?? $product->price, 0, ',', '.') }}</p>
+                </div>
+                <div class="product-actions" onclick="window.location.href='{{ url('/supermarket/donasi/detail/' . $product->id) }}'">
+                    <p class="donasi-button"><b>DONASIKAN</b></p>
                 </div>
             </div>
+        @endforeach
     </div>
-
 </body>
 </html>

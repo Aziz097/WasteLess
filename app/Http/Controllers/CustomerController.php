@@ -15,4 +15,5 @@ class CustomerController extends Controller
         // Pass the user data to the view
         return view('homepage.profilepage', compact('customer'));
     }
+    
 }

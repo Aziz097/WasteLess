@@ -26,7 +26,7 @@ class LoginController extends Controller
             if ($user->role === 'supermarket') {
                 return redirect()->route('supermarket-home')->with('success', 'Login successful!');
             } else if ($user->role === 'customer') {
-                return redirect()->intended('/home')->with('success', 'Login successful!');
+                return redirect('/signin/otp')->with('success', 'Login successful!');
             }
         }
 

@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-
-    // Register a new customer
     public function registerCustomer(Request $request)
     {
         // Validate the incoming request data for customer registration

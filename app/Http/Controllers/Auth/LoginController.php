@@ -30,7 +30,6 @@ class LoginController extends Controller
             }
         }
 
-        // If unsuccessful, redirect back to the login form with an error message
         return back()->withErrors([
             'phone' => 'The provided credentials do not match our records.',
         ])->withInput($request->only('phone'));

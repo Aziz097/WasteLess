@@ -83,3 +83,7 @@ Route::get('/supermarket/donasi/succes', function () {
 Route::get('/supermarket/produk', function () {
     return view('supermarkethomepage.produk');
 });
+
+Route::get('/supermarket/tambah-produk', function () {
+    return view('supermarkethomepage.addproduk');
+});

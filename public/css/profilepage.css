@@ -1,0 +1,113 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.profile-menu {
+    width: 100%;
+    width: 430px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.profile-header {
+    background-color: #2ECC71;
+    color: white;
+    padding: 20px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    clip-path: ellipse(90% 100% at 50% 0%);
+}
+
+.profile-icon {
+    font-size: 48px;
+    margin-right: 15px;
+}
+
+.profile-info .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.profile-info .phone {
+    font-size: 14px;
+    color: #706363;
+}
+
+.menu-section {
+    padding: 10px 20px;
+}
+
+.menu-section h3 {
+    background-color: #2ECC71;
+    color: white;
+    font-size: 14px;
+    padding-left: 10px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.menu-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-section li {
+    padding: 10px 0;
+    border-bottom: 1px solid #2ECC71;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-section li:last-child {
+    border-bottom: none;
+}
+
+.menu-section li i {
+    margin-right: 10px;
+    background-color: #2ECC71;
+}
+
+.bottom-nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 10px;
+    width: 430px;
+    bottom: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.nav-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-item.active img {
+    filter: invert(50%) sepia(97%) saturate(349%) hue-rotate(93deg) brightness(91%) contrast(89%);
+}

@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins';
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.logo{
+    width: 430px;
+    padding: 10px;
+}
+.image-loc{
+    margin-top: 200px;
+}
+button.loc-button {
+    background-color: #00c853;
+    color: white;
+    border: none;
+    padding: 15px 130px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;    
+    margin-top: 300px;
+}

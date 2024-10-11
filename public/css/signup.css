@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.back-arrow{
+    margin-top: 10px;
+}
+.container h1{
+    margin-top: 20px;
+}
+
+.account-selection {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.account-selection h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #666;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.option {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+}
+
+.option .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.option img{
+    height: 70px;
+    width: 70px;
+}
+
+button {
+    background-color: #2ECC71;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.footer{
+    margin-bottom: 20px;
+}

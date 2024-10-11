@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+ 
+.container{
+    padding: 20px;
+    background-color: #2ECC71;
+    border-radius: 0px 0px 20px 20px;
+    height: 70px;
+    top: 0;
+    width: 430px;
+    position: absolute;
+}
+
+.alert{
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+.product-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    height: 120px;
+    margin-top: 15px;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;  
+    left: 0px; /* Pindahkan ke kiri atas */
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.product-image {
+    width: 100px; /* Memperluas lebar penuh */
+    height: 120px; /* Tinggi konsisten */
+    overflow: hidden; /* Agar gambar tidak keluar */
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Untuk memotong gambar secara proporsional */
+}
+
+.product-info {
+    padding: 10px; /* Jarak antar elemen */
+    flex: 1; /* Memungkinkan area info untuk mengambil ruang */
+}
+
+.product-title {
+    font-size: 16px; /* Ukuran font untuk judul */
+    font-weight: 500; /* Medium weight */
+    margin: 0 0 5px; /* Margin untuk jarak */
+}
+
+.old-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: gray; /* Warna abu-abu untuk harga lama */
+}
+
+.new-price {
+    font-size: 18px;
+    color: black; /* Warna untuk harga baru */
+    font-weight: bold; /* Bold untuk menonjolkan harga baru */
+}
+
+.product-actions {
+    display: flex;
+    justify-content: flex-end; /* Rata kanan untuk tombol */
+    padding: 10px; /* Padding untuk tombol */
+}
+
+.donasi-button {
+    background-color: #27AE60;
+    border: none;
+    color: white;
+    padding: 5px 10px; /* Padding untuk tombol */
+    border-radius: 5px; /* Sudut tombol */
+    cursor: pointer; /* Kursor pointer */
+    font-size: 16px; /* Ukuran font untuk tombol */
+}
+
+
+.donasi-button {
+    background-color: #27AE60;
+}

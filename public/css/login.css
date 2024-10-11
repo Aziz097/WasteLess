@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #FFF;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    position: relative;
+}
+
+.back-arrow {
+    position: top;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    text-align: absolute;
+    color: #333;
+    margin-top: 60px;
+}
+
+.input-field {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-field label {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-field input:focus {
+    border-color: #656565;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-password img {
+    width: 24px;
+    height: 24px;
+    color: #666;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #00C853;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #008C4A;
+}
+
+.terms {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.terms a {
+    color: #72acf9;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.brand-logo {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.brand-logo img {
+    width: 100px;
+    height: auto;
+}

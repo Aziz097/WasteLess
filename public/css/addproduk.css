@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+ 
+.container{
+    padding: 20px;
+    border-radius: 0px 0px 20px 20px;
+    height: 70px;
+    top: 0;
+    width: 430px;
+    position: absolute;
+}
+
+.product-container {
+    padding: 20px;
+    width: 400px;
+}
+
+.product-detail {
+    margin-bottom: 15px;
+}
+
+.product-detail label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-detail input, 
+.product-detail textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #2ECC71;
+    border-radius: 4px;
+    background-color: white;
+}
+
+textarea {
+    resize: none;
+}
+
+
+.confirm-button {
+    background-color: #2ECC71;
+    color: white;
+    border: none;
+    width: 400px;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    position: fixed; /* Membuat button tetap di bawah */
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}

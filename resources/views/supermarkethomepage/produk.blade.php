@@ -13,29 +13,6 @@
             <img src="/images/Left arrow button.png" alt="Back Button" onclick="window.location.href='{{ url('/supermarket-home') }}'">
         </div>
 
-        @foreach($products as $product)
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->product_name }}">
-                </div>
-                <div class="product-info">
-                    <p class="product-title">{{ $product->product_name }}</p>
-                    <p class="old-price">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
-                    <p class="new-price">Rp{{ number_format($product->discount_price ?? $product->price, 0, ',', '.') }}</p>
-                </div>
-                <div class="product-actions">
-                    <form action="{{ url('/products/' . $product->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="add-button"><b>HAPUS</b></button>
-                    </form>
-                </div>
-            </div>
-        @endforeach
-
-        <button class="confirm-button" onclick="window.location.href='{{ url('/supermarket/tambah-produk') }}'">Tambah Produk</button>
-
-
         <div class="pagination-links">
             <nav>
                 <ul class="pagination">
@@ -67,7 +44,32 @@
                     @endif
                 </ul>
             </nav>
-        </div> 
+        </div>
+
+        @foreach($products as $product)
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ asset('storage/' . $product->product_image) }}" alt="{{ $product->product_name }}">
+                </div>
+                <div class="product-info">
+                    <p class="product-title">{{ $product->product_name }}</p>
+                    <p class="old-price">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                    <p class="new-price">Rp{{ number_format($product->discount_price ?? $product->price, 0, ',', '.') }}</p>
+                </div>
+                <div class="product-actions">
+                    <form action="{{ url('/products/' . $product->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="add-button"><b>HAPUS</b></button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+
+        <button class="confirm-button" onclick="window.location.href='{{ url('/supermarket/tambah-produk') }}'">Tambah Produk</button>
+
+
+         
     </div>
 </body>
 </html>

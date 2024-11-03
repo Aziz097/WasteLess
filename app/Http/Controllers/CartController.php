@@ -56,9 +56,24 @@ class CartController extends Controller
 
     public function clearCart()
     {
-       
-        Cart::truncate(); 
-        return redirect('/home')->with('success', 'Semua item berhasil dihapus dari keranjang.');
+        // Ambil semua item dari tabel cart
+        $cartItems = Cart::all();
+    
+        // Loop untuk mengurangi stok produk berdasarkan jumlah di keranjang
+        foreach ($cartItems as $item) {
+            $product = Product::find($item->product_id); // Ambil produk berdasarkan ID
+    
+            if ($product) {
+                // Kurangi stok produk
+                $product->stock -= $item->quantity;
+                $product->save(); // Simpan perubahan stok
+            }
+        }
+    
+        // Kosongkan keranjang setelah checkout
+        Cart::truncate();
+    
+        return redirect('/home')->with('success', 'Checkout berhasil, stok produk telah diperbarui.');
     }
 
     // Menghapus produk dari keranjang

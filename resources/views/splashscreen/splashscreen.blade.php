@@ -35,19 +35,21 @@
                   </div>
                 
             </div>
-                <div style="text-align:center">
+            <div style="text-align:center; display:none;">
                   <span class="dot"></span> 
                   <span class="dot"></span> 
                   <span class="dot"></span> 
                   <span class="dot"></span> 
             </div>
-        <div class="button-submit">
-            <button class="masuk-button" onclick="window.location.href='{{ url('/signin') }}'">Masuk</button>
-            <button class="daftar-button" onclick="window.location.href='{{ url('/signup') }}'">Daftar</button>
-        </div>
-        <p class="terms">
-            Dengan masuk atau mendaftar, kamu menyetujui <a href="#">Ketentuan layanan</a> dan <a href="#">Kebijakan privasi</a>.
-        </p>
+        <footer>
+          <div class="button-submit">
+              <button class="masuk-button" onclick="window.location.href='{{ url('/signin') }}'">Masuk</button>
+              <button class="daftar-button" onclick="window.location.href='{{ url('/signup') }}'">Daftar</button>
+          </div>
+          <p class="terms">
+              Dengan masuk atau mendaftar, kamu menyetujui <a href="#">Ketentuan layanan</a> dan <a href="#">Kebijakan privasi</a>.
+          </p>
+        </footer>
     </div>
 
 <script>

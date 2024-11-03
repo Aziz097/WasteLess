@@ -75,8 +75,8 @@
             </div>
             <div class="product-info">
                 <p class="product-title">{{ $product->product_name }}</p>
-                <p class="old-price">Rp{{ number_format($product->price + ($product->price * 0.15), 0, ',', '.') }}</p>
-                <p class="new-price">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                <p class="old-price">Rp{{ number_format($product->price , 0, ',', '.') }}</p>
+                <p class="new-price">Rp{{ number_format($product->price - ($product->price * 0.15), 0, ',', '.') }}</p>
             </div>
             <div class="product-actions">
                 <!-- Tambahkan link ke halaman detail produk -->
